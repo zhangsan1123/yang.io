@@ -1,394 +1,730 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>一些有用的链接</title>
+    <title>学术资源导航</title>
     <style>
-        /* 设置表格宽度为100%，边框合并 */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: fixed;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
         }
-        /* 设置表头和单元格的边框样式 */
-        th, td {
-            border: 2px outset rgb(221, 14, 21); /* 双线边框 */
-            padding: 10px; /* 内边距 */
-            text-align: center; /* 文本居中 */
-        }
-
-        /* 设置所有单元格的背景颜色 */
-        td {
-            background-color: #d9e3ed; /* 浅蓝色背景 */
-        }
-
-        th {
-            background-color: #b9d624; /* 浅蓝色背景 */
-        }
-
         
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
         
+        .container {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            flex-shrink: 0;
+            margin-right: 30px;
+        }
+        
+        .main-content {
+            flex-grow: 1;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 0;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71, #e74c3c, #9b59b6);
+        }
+        
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+        
+        .search-section {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .search-box {
+            flex: 1;
+            max-width: 350px;
+            display: flex;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .search-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        
+        .search-box input {
+            flex-grow: 1;
+            padding: 14px 20px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+            background: #f8f9fa;
+        }
+        
+        .search-box button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 0 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .search-box button i {
+            font-size: 1.1rem;
+        }
+        
+        .search-box button:hover {
+            background: #2980b9;
+        }
+        
+        .google-search button {
+            background: #4285f4;
+        }
+        
+        .google-search button:hover {
+            background: #3367d6;
+        }
+        
+        .bing-search button {
+            background: #008373;
+        }
+        
+        .bing-search button:hover {
+            background: #006658;
+        }
+        
+        .category-nav {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 20px;
+        }
+        
+        .category-nav-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .category-nav-title i {
+            color: #3498db;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 12px;
+        }
+        
+        .nav-links a {
+            color: #555;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            gap: 10px;
+            cursor: pointer;
+        }
+        
+        .nav-links a i {
+            width: 20px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        
+        .nav-links a:hover {
+            background-color: #f0f7ff;
+            color: #3498db;
+            transform: translateX(5px);
+        }
+        
+        .nav-links a:hover i {
+            color: #3498db;
+        }
+        
+        .nav-links a.active {
+            background-color: #e3f2fd;
+            color: #3498db;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(52, 152, 219, 0.2);
+        }
+        
+        .nav-links a.active i {
+            color: #3498db;
+        }
+        
+        .category {
+            margin-bottom: 40px;
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+            display: none; /* 默认隐藏所有分类 */
+        }
+        
+        .category.active {
+            display: block; /* 只显示激活的分类 */
+        }
+        
+        .category:hover {
+            transform: translateY(-3px);
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #3498db;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .category-title i {
+            color: #3498db;
+        }
+        
+        .links-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+        
+        .link-item {
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            border: 1px solid #f0f0f0;
+        }
+        
+        .link-item:hover {
+            background-color: #f8fafc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: #e0e0e0;
+        }
+        
+        .link-item a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+        }
+        
+        .link-item a:hover {
+            color: #2980b9;
+        }
+        
+        .link-item a::before {
+            content: "🔗";
+            font-size: 1rem;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 25px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+        
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 30px;
+            }
+            
+            .category-nav {
+                position: static;
+            }
+            
+            .search-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .search-box {
+                max-width: 100%;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .links-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .links-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            .category {
+                padding: 20px;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <table>
-    <tr>
-        <th colspan="3">教师主页</th>
-    </tr>
-    <tr>
-        <td>
-            <a href="http://staff.ustc.edu.cn/~wangzuoq/" target="_self">
-                王作勤
-            </a>
-        </td>
-        <td>
-            <a href="http://staff.ustc.edu.cn/~spliu/index.html" target="_self">
-                刘世平
-            </a>
-        </td>
-        <td>
-            <a href="http://math0.bnu.edu.cn/~jgbao/index.html" target="_self">
-                保继光
-            </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://www.math.ucla.edu/~tao/" target="_self">
-                陶哲轩
-            </a>
-        </td>
-        <td>
-            <a href="http://www.math.ac.cn/kyry/hcc/" target="_self">
-                郝成春
-            </a>
-        </td>
-        <td>
-            <a href="https://binguimath.github.io/" target="_self">
-                归斌
-            </a>
-        </td>
-
-    <tr>
-        <td>
-            <a href="https://sili-math.github.io/" target="_self">
-                李思
-            </a>
-        </td>
-
-        <td>
-            <a href="http://home.ustc.edu.cn/~xwchen/" target="_self">
-                陈小伍
-            </a>
-        </td>
-
-        <td>
-            <a href="https://qingzhang-math.github.io/" target="_self">
-                张庆
-            </a>
-        </td>
-    </tr>
-
-
-    <tr>
-        <td>
-            <a href="https://www.wangd-math.xyz/cn.index.html" target="_self">
-                王东
-            </a>
-        </td>
-
-        <td>
-            <a href="https://math.ecnu.edu.cn/~jlu/" target="no-change-color">
-                陆俊
-            </a>
-        </td>
-
-
-    </tr>
-
-
-    <tr>
-        <td>
-            <a href="https://daniele-math.github.io/teaching.html" target="_self">
-                Daniele Alessandrini
-            </a>
-        </td>
-        <td>
-            <a href="https://www-users.cse.umn.edu/~garrett/" target="_self">
-                Paul Garrett
-            </a>
-        </td>
-        <td>
-            <a href="https://puzhaokow1993.github.io/homepage/index.html" target="no-change-color">
-                KOW Pu Zhao 
-            </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://math.gsu.edu/yyao/" target="no-change-color">
-                Yongwei Yao
-            </a>
-        </td>
-        <td>
-            <a href="https://frederickfong.me/" target="_self">
-                Tsz-Ho Fang 
-            </a>
-        </td>
-        <td>
-            <a href="https://www.math.hkust.edu.hk/~machas/" target="_self">
-                Jeffrey Robert CHASNOV
-            </a>
-        </td>
-    </tr>
-    
-
-    <tr>
-        <td>
-            <a href="https://www.math.chalmers.se/~mohammad/" target="no-change-color">
-                Mohammad Asadzadeh
-            </a>
-        </td>
-
-        <td>
-            <a href="https://www.math.ucdavis.edu/~romik/teaching/" target="no-change-color">
-                Dan Romik
-            </a>
-        </td>
-        <td>
-            <a href="https://people.math.harvard.edu/~ctm/" target="no-change-color">
-                Curtis T McMullen
-            </a>
-        </td>
-
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://www.math.lsu.edu/~sengupta/" target="no-change-color">
-                Sengupta
-            </a>
-        </td>
-        <td>
-            <a href="https://www.math.ucdavis.edu/~hunter/" target="no-change-color">
-                John K. Hunter
-            </a>
-        </td>
-
-        <td>
-            <a href="https://www.cs.lewisu.edu/~harsyram/" target="no-change-color">
-                Amanda Harsy
-            </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://math.gsu.edu/xye/" target="no-change-color">
-                Xiaojing Ye
-            </a>
-        </td>
-        <td>
-            <a href="https://www.math.wustl.edu/~victor/" target="no-change-color">
-                Mladen Victor Wickerhauser
-            </a>
-        </td>
-        <td>
-            <a href="https://www.geneseo.edu/~aguilar/" target="no-change-color">
-                Cesar O. Aguilar
-            </a>
-        </td>
-    </tr>
-
-
-
-
-
-
-
-    <tr>
-        <th colspan="3">学生主页</th>
-    </tr>
-
-
-    <tr>
-        <td>
-            <a href="https://www.zhangjy9610.me/" target="_self">
-                章俊彦
-            </a>
-        </td>
-        <td>
-            <a href="http://home.ustc.edu.cn/~zyx240014/CV.html" target="_self">
-                宗语轩
-            </a>
-        </td>
-        <td>
-            <a href="http://home.ustc.edu.cn/~lucasshen/" target="_self">
-                吕浩哲
-            </a>
-        </td>
-    </tr>
-
-    <tr> 
-        <td>
-            <a href="http://home.ustc.edu.cn/~fa1247/" target="_self">
-                苗桐畅
-            </a>
-        </td>
-        <td>
-            <a href="http://home.ustc.edu.cn/~huangty0407/" target="_self">
-                黄天一
-            </a>
-        </td>
-        <td>
-            <a href="https://tysunseven.github.io/" target="_self">
-                孙天阳
-            </a>
-        </td>
-    </tr>
-
-
-    <tr>
-        <td>
-            <a href="http://home.ustc.edu.cn/~lx20160727/" target="no-change-color">
-                李馨雨
-            </a>
-        </td>
-        <td>
-            <a href="https://zhangsan1123.github.io/" target="no-change-color">
-                张三
-            </a>
-        </td>
-
-    </tr>
-
-
-    <tr>
-        <th colspan="3">其他主页</th>
-    </tr>
-    <tr>
-        <td>
-            <a href="http://home.ustc.edu.cn/~matchbox/real.html
-            " target="_self">
-                中科大实分析课程主页
-            </a>
-        </td>
-        <td>
-            <a href="https://www.zhangjy9610.me/USTCdata.html" target="_self">
-                USTC学习指南
-            </a>
-        </td>
-        <td>
-            <a href="https://jiyouhai.github.io/tju-math-guide/professional_courses/" target="_self">
-                天大本科生指北
-            </a>
-        </td>
-    </tr>
-
-    <tr> 
-        <td>
-            <a href="https://www.mathcity.org/notes" target="no-change-color">
-                mathcity(mathnotes)
-            </a>
-        </td>
-        <td>
-            <a href="https://ocw.mit.edu/search/?d=Mathematics&s=department_course_numbers.sort_coursenum" target="no-change-color">
-                OpenCourseWare
-            </a>
-        </td>
-        <td>
-            <a href="https://www.mathcity.org/notes/real-analysis-hand-written-kaushef" target="no-change-color">
-                Kaushef Salamat 的实分析手写笔记
-            </a>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <a href="https://metaphor.ethz.ch/" target="no-change-color">
-                苏黎世讲座主页
-            </a>
-        </td>
-    </tr>
-
-    <tr>
-            <th colspan="3">文件处理</th>
-        </tr>
-    <tr>
-        <td>
-            <a href="https://www.ilovepdf.com/" target="_self">
-                ILOVEPDF
-            </a>
-        </td>
-        <td>
-            <a href="https://www.pdfpai.com/" target="_self">
-                PDF派
-            </a>
-        </td>
-        <td>
-            <a href="https://jianwai.youdao.com/index/0" target="_self">
-                网易工作台
-            </a>
-        </td>
-    </tr>
-
-    <tr>
+    <div class="container">
+        <div class="sidebar">
+            <div class="category-nav">
+                <h3 class="category-nav-title"><i class="fas fa-compass"></i> 分类导航</h3>
+                <ul class="nav-links">
+		     <li><a href="#" data-category="useful" class="active"><i class="fas fa-graduation-cap"></i> 常用</a></li>
+                    <li><a href="#" data-category="academic" class="active"><i class="fas fa-graduation-cap"></i> 学术</a></li>
+                    <li><a href="#" data-category="entertainment-tools"><i class="fas fa-tools"></i> 娱乐与工具</a></li>
+                    <li><a href="#" data-category="college-websites"><i class="fas fa-university"></i> 学院官网</a></li>
+                    <li><a href="#" data-category="math-people"><i class="fas fa-users"></i> Math People</a></li>
+                    <li><a href="#" data-category="math-papers"><i class="fas fa-file-pdf"></i> Math Papers</a></li>
+                    <li><a href="#" data-category="math-notes"><i class="fas fa-sticky-note"></i> Math Notes</a></li>
+                </ul>
+            </div>
+        </div>
         
-    </tr>
+        <div class="main-content">
+            <header>
+                <h1>学术资源导航</h1>
+                <p class="subtitle">一站式学术资源与工具集合</p>
+                
+                <div class="search-section">
+                    <div class="search-box bing-search">
+                        <input type="text" id="bingSearchInput" placeholder="在必应中搜索...">
+                        <button onclick="bingSearch()"><i class="fab fa-microsoft"></i> 必应搜索</button>
+                    </div>
+                    <div class="search-box google-search">
+                        <input type="text" id="googleSearchInput" placeholder="在谷歌中搜索...">
+                        <button onclick="googleSearch()"><i class="fab fa-google"></i> 谷歌搜索</button>
+                    </div>
+                </div>
+            </header>
+            
+            <main>
 
-    <tr>
-        <th colspan="3">AI</th>
-    </tr>
+		<!-- 常用 -->
+                <section class="category active" id="useful">
+                    <h2 class="category-title"><i class="fas fa-graduation-cap"></i> 常用</h2>
+			<!-- 常用 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+    		<i class="fas fa-star"></i> 常用
+		</h3>
+		<div class="links-container">
+		<div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/publications-search" target="_blank">AMS</a></div>
+                        <div class="link-item"><a href="https://arxiv.org/" target="_blank">arXiv</a></div>
+                        <div class="link-item"><a href="https://scholar.google.com.hk/?hl=zh-CN" target="_blank">Google Scholar</a></div>
+			<div class="link-item"><a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a></div>
+                        <div class="link-item"><a href="https://kimi.moonshot.cn/" target="_blank">Kimi</a></div>
+                        <div class="link-item"><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></div>
+			<div class="link-item"><a href="https://advanced.fenqubiao.com/" target="_blank">中科院分区表</a></div>
+		</div>
+		</section>
 
-    <tr>
-        <td>
-            <a href="https://www.deepseek.com/" target="_self">
-               DeepSeek
-            </a>
-        </td>
-        <td>
-            <a href="https://kimi.moonshot.cn/" target="_self">
-                kimi
-            </a>
-        </td>
-        <td>
-            <a href="https://chatgpt.com/" target="_self">
-                ChatGPT
-            </a>
-        </td>
+		
+                <!-- 学术大类 -->
+                <section class="category active" id="academic">
+                    <h2 class="category-title"><i class="fas fa-graduation-cap"></i> 学术</h2>
+
+     
+                    <!-- 学术搜索子类 -->
+                    <h3 style="margin: 20px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-search"></i> 学术搜索
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/publications-search" target="_blank">AMS</a></div>
+                        <div class="link-item"><a href="https://arxiv.org/" target="_blank">arXiv</a></div>
+                        <div class="link-item"><a href="https://scholar.google.com.hk/?hl=zh-CN" target="_blank">Google Scholar</a></div>
+                        <div class="link-item"><a href="https://zbmath.org/" target="_blank">zbMATH</a></div>
+                        <div class="link-item"><a href="https://www.sci-hub.st/" target="_blank">Sci-Hub</a></div>
+                        <div class="link-item"><a href="https://www.isiknowledge.com/" target="_blank">Web of Science</a></div>
+                        <div class="link-item"><a href="https://www.sciencedirect.com/" target="_blank">ScienceDirect</a></div>
+                        <div class="link-item"><a href="https://xueshu.khab.top/" target="_blank">freepaper</a></div>
+                        <div class="link-item"><a href="http://www.lib.bnu.edu.cn/" target="_blank">北师大图书馆</a></div>
+                        <div class="link-item"><a href="https://www.cnki.net/" target="_blank">中国知网</a></div>
+                        <div class="link-item"><a href="https://www.wanfangdata.com.cn/" target="_blank">万方数据</a></div>
+                        <div class="link-item"><a href="https://advanced.fenqubiao.com/" target="_blank">中科院分区表</a></div>
+                        <div class="link-item"><a href="https://xueshu.baidu.com/" target="_blank">百度学术</a></div>
+                        <div class="link-item"><a href="https://cn.bing.com/academic/" target="_blank">Bing学术</a></div>
+                        <div class="link-item"><a href="https://www.connectedpapers.com/" target="_blank">Connected Papers</a></div>
+                        <div class="link-item"><a href="https://researchrabbitapp.com/" target="_blank">ResearchRabbit</a></div>
+                        <div class="link-item"><a href="http://www.globalauthorid.com/" target="_blank">Global Author ID</a></div>
+                    </div>
+                    
+                    <!-- 学术资源子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-book"></i> 学术资源
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://www.math.org.cn/" target="_blank">博士数学家园</a></div>
+                        <div class="link-item"><a href="https://artofproblemsolving.com/community" target="_blank">AoPS社区</a></div>
+                        <div class="link-item"><a href="https://math.stackexchange.com/" target="_blank">Math StackExchange</a></div>
+                        <div class="link-item"><a href="https://mathoverflow.net/" target="_blank">MathOverflow</a></div>
+                        <div class="link-item"><a href="https://www.mathunion.org/icm/proceedings" target="_blank">国际数学家大会</a></div>
+                        <div class="link-item"><a href="https://mathworld.wolfram.com/" target="_blank">Wolfram</a></div>
+                        <div class="link-item"><a href="https://www.proquest.com/" target="_blank">ProQuest</a></div>
+                        <div class="link-item"><a href="https://github.com/" target="_blank">GitHub</a></div>
+                    </div>
+                    
+                    <!-- 期刊与基金子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-newspaper"></i> 期刊与基金
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="http://www.nsfc.gov.cn/" target="_blank">国家自然科学基金</a></div>
+                        <div class="link-item"><a href="https://www.funresearch.cn/nsfc/index" target="_blank">科研之友</a></div>
+                        <div class="link-item"><a href="http://fz.people.com.cn/skygb/sk/index.php/Index/index" target="_blank">国家社科基金</a></div>
+                        <div class="link-item"><a href="http://fund.keyanzhiku.com/" target="_blank">科研基金</a></div>
+                        <div class="link-item"><a href="https://muchong.com/" target="_blank">小木虫</a></div>
+                    </div>
+                </section>
+                
+                <!-- 娱乐与工具大类 -->
+                <section class="category" id="entertainment-tools">
+                    <h2 class="category-title"><i class="fas fa-tools"></i> 娱乐与工具</h2>
+                    
+                    <!-- AI工具子类 -->
+                    <h3 style="margin: 20px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-robot"></i> AI工具
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://chat.deepseek.com/" target="_blank">DeepSeek</a></div>
+                        <div class="link-item"><a href="https://kimi.moonshot.cn/" target="_blank">Kimi</a></div>
+                        <div class="link-item"><a href="https://chatgpt.com/" target="_blank">ChatGPT</a></div>
+                        <div class="link-item"><a href="https://www.aminer.cn/" target="_blank">AMiner</a></div>
+                        <div class="link-item"><a href="https://consensus.app/search/" target="_blank">Consensus</a></div>
+                        <div class="link-item"><a href="https://app.txyz.ai/" target="_blank">TXYZ AI</a></div>
+                        <div class="link-item"><a href="https://chatglm.cn/" target="_blank">ChatGLM</a></div>
+                        <div class="link-item"><a href="https://yiyan.baidu.com/" target="_blank">文心一言</a></div>
+                        <div class="link-item"><a href="https://www.doubao.com/chat/" target="_blank">豆包</a></div>
+                        <div class="link-item"><a href="https://yuanbao.tencent.com/chat/" target="_blank">腾讯元宝</a></div>
+                        <div class="link-item"><a href="https://grok.com/" target="_blank">Grok</a></div>
+                        <div class="link-item"><a href="https://www.tongyi.com/" target="_blank">通义千问</a></div>
+                        <div class="link-item"><a href="https://www.wolframalpha.com/" target="_blank">Wolfram Alpha</a></div>
+                    </div>
+                    
+                    <!-- 翻译工具子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-language"></i> 翻译工具
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://fanyi.baidu.com/" target="_blank">百度翻译</a></div>
+                        <div class="link-item"><a href="https://cidian.youdao.com/" target="_blank">有道词典</a></div>
+                        <div class="link-item"><a href="https://www.deepl.com/zh/translator" target="_blank">DeepL翻译</a></div>
+                        <div class="link-item"><a href="https://www.bing.com/translator?mkt=zh-CN" target="_blank">Bing翻译</a></div>
+                    </div>
+                    
+                    <!-- 文件处理工具子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-file-alt"></i> 文件处理工具
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://www.ilovepdf.com/zh-cn" target="_blank">ILovePDF</a></div>
+                        <div class="link-item"><a href="https://www.67tool.com/" target="_blank">67工具</a></div>
+                    </div>
+                    
+                    <!-- LaTeX相关子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-file-code"></i> LaTeX相关
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://www.overleaf.com/" target="_blank">Overleaf</a></div>
+                        <div class="link-item"><a href="https://www.latexlive.com/home##" target="_blank">LaTeX Live</a></div>
+                        <div class="link-item"><a href="https://hartwork.org/beamer-theme-matrix/" target="_blank">Beamer主题矩阵</a></div>
+                        <div class="link-item"><a href="https://simpletex.net/ai/latex_ocr" target="_blank">SimpleTex LaTeX OCR</a></div>
+                    </div>
+                    
+                    <!-- 娱乐子类 -->
+                    <h3 style="margin: 30px 0 15px; color: #3498db; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-gamepad"></i> 娱乐
+                    </h3>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://www.bilibili.com/" target="_blank">Bilibili</a></div>
+                        <div class="link-item"><a href="http://532movie.bnu.edu.cn/" target="_blank">532</a></div>
+                        <div class="link-item"><a href="https://v.qq.com/" target="_blank">腾讯视频</a></div>
+                        <div class="link-item"><a href="https://www.youku.com/" target="_blank">优酷</a></div>
+                        <div class="link-item"><a href="https://www.iqiyi.com/" target="_blank">爱奇艺</a></div>
+                        <div class="link-item"><a href="https://tv.cctv.com/" target="_blank">央视网</a></div>
+                        <div class="link-item"><a href="https://mp.weixin.qq.com/" target="_blank">微信公众号</a></div>
+                        <div class="link-item"><a href="https://x-superflash.com/" target="_blank">superflash</a></div>
+                        <div class="link-item"><a href="https://8.210.218.9/sitetag/%e7%a3%81%e5%8a%9b%e5%a4%a9%e5%a0%82" target="_blank">磁力天堂</a></div>
+                    </div>
+                </section>
+                
+                <!-- 学院官网 -->
+                <section class="category" id="college-websites">
+                    <h2 class="category-title"><i class="fas fa-university"></i> 学院官网</h2>
+                    <div class="links-container">
+                        <div class="link-item"><a href="https://math.bnu.edu.cn/" target="_blank">北师大数学学院</a></div>
+                        <div class="link-item"><a href="http://ss.graduate.bnu.edu.cn/" target="_blank">北师大研究生院</a></div>
+                        <div class="link-item"><a href="https://yz.bnu.edu.cn/" target="_blank">北师大招生网</a></div>
+                        <div class="link-item"><a href="http://172.16.202.201/srun_portal_success?ac_id=46&theme=bnu&user-ip=172.23.86.48&wlanacname=&srun_domain=" target="_blank">北师大校园网</a></div>
+			<div class="link-item"><a href="https://www.math.pku.edu.cn/" target="_blank">北京大学数学科学学院</a></div>
+			<div class="link-item"><a href="http://math.tsinghua.edu.cn/" target="_blank">清华大学数学科学系</a></div>
+			<div class="link-item"><a href="https://math.sjtu.edu.cn/" target="_blank">上海交通大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.fudan.edu.cn/" target="_blank">复旦大学数学科学学院</a></div>
+			<div class="link-item"><a href="http://www.math.zju.edu.cn/" target="_blank">浙江大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.nju.edu.cn/" target="_blank">南京大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.nankai.edu.cn/" target="_blank">南开大学数学科学学院</a></div>
+			<div class="link-item"><a href="http://math.tju.edu.cn/" target="_blank">天津大学数学学院</a></div>
+			<div class="link-item"><a href="https://www.math.sdu.edu.cn/" target="_blank">山东大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.ustc.edu.cn/" target="_blank">中国科学技术大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.hit.edu.cn/" target="_blank">哈尔滨工业大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.jlu.edu.cn/" target="_blank">吉林大学数学学院</a></div>
+			<div class="link-item"><a href="https://maths.whu.edu.cn/" target="_blank">武汉大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.sysu.edu.cn/" target="_blank">中山大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.xmu.edu.cn/" target="_blank">厦门大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.scu.edu.cn/" target="_blank">四川大学数学学院</a></div>
+			<div class="link-item"><a href="https://sci.cqu.edu.cn/" target="_blank">重庆大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.xjtu.edu.cn/" target="_blank">西安交通大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.nwpu.edu.cn/" target="_blank">西北工业大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.lzu.edu.cn/" target="_blank">兰州大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.seu.edu.cn/" target="_blank">东南大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.tongji.edu.cn/" target="_blank">同济大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.csu.edu.cn/" target="_blank">中南大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.dlut.edu.cn/" target="_blank">大连理工大学数学科学学院</a></div>
+			<div class="link-item"><a href="http://math.hnu.edu.cn/" target="_blank">湖南大学数学学院</a></div>
+			<div class="link-item"><a href="http://cos.neu.edu.cn/math/" target="_blank">东北大学理学院数学学科</a></div>
+			<div class="link-item"><a href="https://lxy.nwafu.edu.cn/" target="_blank">西北农林科技大学理学院（含数学学科）</a></div>
+			<div class="link-item"><a href="https://sci.cau.edu.cn/col/col40602/index.html" target="_blank">中国农业大学理学院应用数学系</a></div>
+			<div class="link-item"><a href="http://math.ecnu.edu.cn/" target="_blank">华东师范大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://www2.scut.edu.cn/math/" target="_blank">华南理工大学数学学院</a></div>
+			<div class="link-item"><a href="https://math.buaa.edu.cn/" target="_blank">北京航空航天大学数学科学学院</a></div>
+			<div class="link-item"><a href="https://math.bit.edu.cn/" target="_blank">北京理工大学数学与统计学院</a></div>
+			<div class="link-item"><a href="https://math.ruc.edu.cn/" target="_blank">中国人民大学数学学院</a></div>
+			<div class="link-item"><a href="https://lxy.muc.edu.cn/" target="_blank">中央民族大学理学院（含数学学科）</a></div>
+			<div class="link-item"><a href="https://math.ouc.edu.cn/" target="_blank">中国海洋大学数学科学学院</a></div>
+                    </div>
+                </section>
+                
+                <!-- Math People -->
+                <section class="category" id="math-people">
+                    <h2 class="category-title"><i class="fas fa-users"></i> Math People</h2>
+                    <div class="links-container">
+                       <div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=735596" target="_blank">Gao Zhiqiang</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=222165" target="_blank">Deng Guantie</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=292108" target="_blank">Poltoratskii</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=755819" target="_blank">Zikkos</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=36210" target="_blank">Beurling</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=118855" target="_blank">Malliavin</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=238423" target="_blank">Chistyakov</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=158300" target="_blank">Seip</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=237498" target="_blank">Borichev</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=106950" target="_blank">Kroó, András</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=63810" target="_blank">Erdélyi</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=198926" target="_blank">Sedlets'kii</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=777791" target="_blank">Wang, Jin Huan</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=361073" target="_blank">Operstein</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=200825" target="_blank">Horváth, Miklós</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=104735" target="_blank">Koosis</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=39165" target="_blank">Bonet, José</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=713348" target="_blank">Yang, Xiang Dong</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=662897" target="_blank">Xue, Qing Ying</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=317762" target="_blank">Yang, Da Chun</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=699814" target="_blank">Wang, Maofa</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=682025" target="_blank">Wang, Xiaofeng</a></div><div class="link-item"><a href="https://mathscinet.ams.org/mathscinet/author?authorid=227292" target="_blank">Hu, Zhangjian</a></div>                    </div>
+                </section>
+                
+                <!-- Math Papers -->
+                <section class="category" id="math-papers">
+                    <h2 class="category-title"><i class="fas fa-file-pdf"></i> Math Papers</h2>
+                    <div class="links-container">
+                        <div class="link-item"><a href="#" target="_blank">待添加内容</a></div>
+                    </div>
+                </section>
+                
+                <!-- Math Notes -->
+                <section class="category" id="math-notes">
+                    <h2 class="category-title"><i class="fas fa-sticky-note"></i> Math Notes</h2>
+                    <div class="links-container">
+                        <div class="link-item"><a href="#" target="_blank">待添加内容</a></div>
+                    </div>
+                </section>
+            </main>
+            
+            <footer>
+                <p>学术资源导航 &copy; 2023 | 为学术研究提供便利</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="websiteCount">0</div>
+                        <div class="stat-label">收录网站</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">资源分类</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">15+</div>
+                        <div class="stat-label">子类别</div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        // 分类切换功能
+        function switchCategory(categoryId) {
+            // 隐藏所有分类
+            document.querySelectorAll('.category').forEach(category => {
+                category.classList.remove('active');
+            });
+            
+            // 显示选中的分类
+            const targetCategory = document.getElementById(categoryId);
+            if (targetCategory) {
+                targetCategory.classList.add('active');
+            }
+            
+            // 更新导航激活状态
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-category') === categoryId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // 初始化导航点击事件
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const categoryId = this.getAttribute('data-category');
+                    switchCategory(categoryId);
+                });
+            });
+            
+            // 默认显示学术分类
+            switchCategory('academic');
+        });
+
+        // 必应搜索功能
+        function bingSearch() {
+            const searchTerm = document.getElementById('bingSearchInput').value;
+            if (searchTerm.trim() !== '') {
+                window.open(`https://www.bing.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
+            } else {
+                alert('请输入搜索内容');
+            }
+        }
+
+        // 谷歌搜索功能
+        function googleSearch() {
+            const searchTerm = document.getElementById('googleSearchInput').value;
+            if (searchTerm.trim() !== '') {
+                window.open(`https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`, '_blank');
+            } else {
+                alert('请输入搜索内容');
+            }
+        }
         
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://www.chatglm.cn/main/alltoolsdetail" target="_self">
-                智谱清言
-            </a>
-        </td>
+        // 允许按Enter键进行搜索
+        document.getElementById('googleSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                googleSearch();
+            }
+        });
         
-        <td>
-            <a href="https://tongyi.aliyun.com/qianwen/?spm=5176.28326591.0.0.40f76ee1IeJMNj" target="_self">
-                通义千问
-            </a>
-        </td>
-        <td>
-            <a href="https://yiyan.baidu.com/" target="_self">
-                文心一言
-            </a>
-        </td>
-    </tr>
-
-    <tr>
-        <td>
-            <a href="https://metaso.cn/" target="_self">
-                秘塔AI
-            </a>
-        </td>
-    </tr>
-
+        document.getElementById('bingSearchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                bingSearch();
+            }
+        });
         
-    </table>
+        // 添加网站计数功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const linkItems = document.querySelectorAll('.link-item');
+            const websiteCount = linkItems.length;
+            document.getElementById('websiteCount').textContent = websiteCount;
+        });
+    </script>
 </body>
 </html>
